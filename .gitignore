@@ -1,0 +1,8 @@
+# Defaults
+.DS_Store
+.idea
+*.log
+tmp/
+
+# Datasets
+**/MNIST
