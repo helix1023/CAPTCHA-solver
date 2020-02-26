@@ -3,7 +3,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from tensorflow import keras
-from keras.models import Sequential
+from keras.models import Sequential, model_from_json, load_model
 from keras.layers import Dense, Conv2D, Dropout, Flatten, MaxPooling2D
 import random
 import os
@@ -39,20 +39,13 @@ def generate_model(shape):
     model.add(Dense(10, activation=tf.nn.softmax))
     return model
 
-def print_example(test, model, r):
-    plt.style.use("dark_background")
-    fig = plt.figure()
-    data = test[r].reshape(28, 28)
-    plt.imshow(data)
-    pred = model.predict(test[r].reshape(1, 28, 28, 1))
-    title = 'Prediction: ' + str(pred.argmax())
-    plt.title(title)
-    plt.show()
+def save_model(model):
+    model_json = model.to_json()
 
-def print_n_examples(test, model, n):
-    for i in range(n):
-        random_i = int(random.random() * 9999)
-        print_example(test, model, random_i)
+    with open("model/model.json", 'w') as json_file:
+        json_file.write(model_json)
+
+    model.save_weights("model/model.h5")
 
 def main():
     (x_train, y_train), (x_test, y_test) = load_data()
@@ -63,8 +56,8 @@ def main():
                   metrics=['accuracy'])
     model.fit(x=x_train, y=y_train, epochs=5)
     results = model.evaluate(x_test, y_test)
-    print(results)
-    print_n_examples(x_test, model, 10)
+
+    save_model(model)
 
 if __name__ == "__main__":
     main()
