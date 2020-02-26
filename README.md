@@ -1,4 +1,4 @@
-# CAPTHCA-solver
+# CAPTCHA-solver
 Project for EECE 4638
 
 ## Usage
