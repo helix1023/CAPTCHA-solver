@@ -4,3 +4,6 @@
 
 # Datasets
 **/MNIST
+
+# Weights
+*.h5
