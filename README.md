@@ -1,5 +1,4 @@
-# CAPTCHA-solver
-Project for EECE 4638
+# Keras MNIST neural network
 
 ## Usage
 ### Required Packages:
