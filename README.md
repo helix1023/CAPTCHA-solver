@@ -1,5 +1,5 @@
 # Keras MNIST neural network
-
+## Project capable of generating and saving a neural network that can identify handwritten numbers with >99% accuracy.
 ## Usage
 ### Required Packages:
 This project is based on python 3.7.2 and requires several additional packages to be installed via pip.  This can be accomplished through the steps below.
